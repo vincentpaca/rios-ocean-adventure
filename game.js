@@ -536,11 +536,17 @@
       }
     }
 
-    // Pickups
+    // Pickups — magnet pull when near, generous grab radius for little hands
     for (const item of state.pickups) {
       if (item.taken) continue;
       item.phase += dt * 2;
-      if (dist(p.x, p.y, item.x, item.y) < 64) {
+      const d = dist(p.x, p.y, item.x, item.y);
+      if (d < 110 && d > 1) {
+        const pull = Math.min(1, (110 - d) / 110) * 140 * dt;
+        item.x += ((p.x - item.x) / d) * pull;
+        item.y += ((p.y - item.y) / d) * pull;
+      }
+      if (d < 78) {
         item.taken = true;
         state.inv[item.kind] += 1;
         updateInventoryUI();
