@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Rio's Ocean Adventure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="Rio's Ocean Adventure game"></canvas>
+
+    <div id="title-screen" class="screen">
+      <div class="title-sky"></div>
+      <div class="title-waves" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="title-content">
+        <p class="brand">Rio's Ocean Adventure</p>
+        <p class="tagline">Swim · Catch · Cook · Explore</p>
+        <button id="btn-play" class="btn-hero" type="button" aria-label="Play">
+          <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M20 12v40l36-20z"/></svg>
+        </button>
+      </div>
+      <div class="title-fish" aria-hidden="true"></div>
+    </div>
+
+    <div id="hud" class="hud hidden" aria-live="polite">
+      <div class="hearts" id="hearts"></div>
+      <div class="inventory" id="inventory"></div>
+      <div class="toast" id="toast" hidden></div>
+    </div>
+
+    <div id="touch-controls" class="touch-controls hidden">
+      <div id="joystick" class="joystick" aria-label="Move">
+        <div class="joystick-base">
+          <div class="joystick-knob" id="joystick-knob"></div>
+        </div>
+      </div>
+      <div class="action-btns">
+        <button id="btn-catch" class="btn-action catch" type="button" aria-label="Catch">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+            <ellipse cx="24" cy="26" rx="14" ry="9" fill="#FF8A3D"/>
+            <path d="M10 26c0-4 4-8 8-8" fill="none" stroke="#E86A1A" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="34" cy="24" r="2.2" fill="#1a3a4a"/>
+          </svg>
+        </button>
+        <button id="btn-cook" class="btn-action cook" type="button" aria-label="Cook">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+            <path d="M22 6c1 3 2 5 2 7 2-2 4-5 5-8-3 1-5 1-7 1z" fill="#FFD166"/>
+            <path d="M18 10c2 4 3 6 3 9 3-3 5-6 7-10-4 1-7 1-10 1z" fill="#FF6B35"/>
+            <ellipse cx="24" cy="38" rx="14" ry="4" fill="#4a3420"/>
+            <path d="M12 36v-10c0-1 1-2 2-2h20c1 0 2 1 2 2v10" fill="#2d4a3a"/>
+            <ellipse cx="24" cy="26" rx="12" ry="5" fill="#1a3028"/>
+            <path d="M10 30c0-4 2-6 4-6M38 30c0-4-2-6-4-6" fill="none" stroke="#5a7a68" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="hint" class="hint hidden">
+      <span class="hint-desktop">Arrows / WASD move · Space catch · E cook</span>
+      <span class="hint-touch">Joystick move · Fish button catch · Pot button cook</span>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
