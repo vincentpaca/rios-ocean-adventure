@@ -3,22 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>Rio's Ocean Adventure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
   <div id="app">
     <canvas id="game" aria-label="Rio's Ocean Adventure game"></canvas>
 
-    <div id="title-screen" class="screen">
-      <div class="title-sky"></div>
-      <div class="title-waves" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
+    <div id="loading" class="loading">
+      <p class="brand-load">Rio's Ocean Adventure</p>
+      <p class="load-msg">Loading ocean…</p>
+    </div>
+
+    <div id="title-screen" class="screen hidden">
+      <div class="title-veil" aria-hidden="true"></div>
       <div class="title-content">
         <p class="brand">Rio's Ocean Adventure</p>
         <p class="tagline">Swim · Catch · Cook · Explore</p>
@@ -26,7 +36,6 @@
           <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M20 12v40l36-20z"/></svg>
         </button>
       </div>
-      <div class="title-fish" aria-hidden="true"></div>
     </div>
 
     <div id="hud" class="hud hidden" aria-live="polite">
@@ -67,6 +76,6 @@
       <span class="hint-touch">Joystick move · Fish button catch · Pot button cook</span>
     </div>
   </div>
-  <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>
