@@ -1,8 +1,8 @@
 # Rio's Ocean Adventure
 
-A Starting ocean slice for a 5-year-old browser game — colourful **low-poly 3D** swim, catch fish, cook, and collect.
+A colourful **low-poly 3D** browser adventure for a 5-year-old — swim, catch, cook, craft, explore biomes, drive a land van, grab rainbow turbo, beat a goofy boss, build a midnight house, and survive a silly ultra-fast zombie chase.
 
-Built with [Three.js](https://threejs.org/). Soft fog, GLB props, phone-friendly.
+Built with [Three.js](https://threejs.org/). Phone-friendly. Soft fails.
 
 ## Open locally
 
@@ -10,30 +10,47 @@ Built with [Three.js](https://threejs.org/). Soft fog, GLB props, phone-friendly
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080` (modules need a static server — don't open `index.html` as a file).
+Then open `http://localhost:8080` (ES modules need a static server).
 
-Demo deep-link: `http://localhost:8080/?play=1`
+| Link | What |
+| --- | --- |
+| `/?play=1` | Skip title |
+| `/?play=1&biome=flower` | Flower land |
+| `/?play=1&biome=mountains` | Mountains + van |
+| `/?play=1&biome=caves` | Diamond caves + turbo |
+| `/?play=1&biome=diamondland` | Boss arena |
+| `/?play=1&biome=midnight` | Midnight house / jellies |
+| `/?play=1&biome=zombie` | Zombie chase |
 
 ## Controls
 
-**Keyboard:** Arrows / WASD move · Space catch · E cook  
+**Keyboard:** WASD / arrows move · Space catch · **F** attack · **E** action (cook / van / turbo / house) · **C** craft · **Q** cycle weapon  
 
-**Touch:** Joystick move · fish button catch · pot button cook
+**Touch:** Joystick · fish catch · sword attack · pot action · craft
 
-## Gameplay (this slice)
+## Biomes & set pieces
 
-Swim as a diver · catch fish · cook at the pot · collect sticks, stones, shells, diamonds · soft fails · icon inventory
+1. **Starting ocean** — fish, cook, collect, portals  
+2. **Flower land** — flowers + **old van** (land only)  
+3. **Mountains** — bright peaks + van  
+4. **Diamond caves** — diamonds, craft diamond arrows, **free turbo**  
+5. **Diamond land** — goofy boss (sticks / arrows / diamond arrows)  
+6. **Midnight zone** — glow, jellyfish, friendly colossal squids, **build house** (sticks+stones+shells)  
+7. **Zombie chase** — after boss; silly fast zombies; turbo helps  
 
-## Credits (CC0 assets)
+## Craft
 
-All third-party models here are **Public Domain (CC0)** — attribution not required, credited with thanks:
+- 2 sticks → stick weapon  
+- 2 sticks → 5 arrows (after stick weapon)  
+- 1 diamond + 1 stick → 3 diamond arrows  
+- Midnight house: 2 sticks + 2 stones + 1 shell per part (×3)
+
+## Credits (CC0)
 
 | Pack | Author | Use |
 | --- | --- | --- |
-| [Animated Fish / LowPoly Animated Fish](https://quaternius.com/) | Quaternius | Catchable fish + swim clips (`assets/models/fish/`) |
-| [Coral Reef Set](https://poly.pizza/m/74GL45Fvdh) | MiniPoly | Seafloor coral (`assets/models/coral/`) — **CC0 verified** |
-| [Food Kit](https://kenney.nl/assets/food-kit) | Kenney | Cook pot |
-| [Survival Kit](https://kenney.nl/assets/survival-kit) | Kenney | Campfire pit, wood/stone resources, rocks |
-| [Nature Kit](https://kenney.nl/assets/nature-kit) | Kenney | Extra rock/stone scatter |
+| Animated Fish | Quaternius | Catchable fish |
+| Coral Reef Set | MiniPoly | Seafloor coral |
+| Food / Survival / Nature kits | Kenney | Pot, camp, rocks, resources |
 
-Diver mesh and UI are original to this project.
+Diver, boss, zombies, van, biomes UI — original to this project.

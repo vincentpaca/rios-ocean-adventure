@@ -344,6 +344,79 @@ html, body {
   background: linear-gradient(160deg, #7ec98a, #3d9a68);
 }
 
+.btn-action.attack {
+  background: linear-gradient(160deg, #ff8ad5, #e050b0);
+}
+
+.btn-action.craft {
+  background: linear-gradient(160deg, #ffd166, #e0a020);
+}
+
+.biome-chip {
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(8, 48, 68, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  color: #fffef6;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.weapon-row {
+  max-width: min(92vw, 420px);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: rgba(255, 250, 230, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  padding: 0.2rem 0.5rem;
+}
+
+.boss-bar {
+  width: min(70vw, 280px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.boss-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fff0f8;
+}
+
+.boss-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.boss-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff6ad5, #ffd166);
+  transition: width 0.15s ease;
+}
+
+.victory .victory-brand {
+  color: #ffe08a;
+}
+
+.action-btns {
+  gap: 0.45rem;
+}
+
+@media (max-width: 520px) {
+  .btn-action { width: 62px; height: 62px; }
+  .action-btns { gap: 0.35rem; }
+}
+
 .hint {
   position: absolute;
   bottom: calc(0.5rem + var(--safe-bottom));

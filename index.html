@@ -31,16 +31,33 @@
       <div class="title-veil" aria-hidden="true"></div>
       <div class="title-content">
         <p class="brand">Rio's Ocean Adventure</p>
-        <p class="tagline">Swim · Catch · Cook · Explore</p>
+        <p class="tagline">Swim · Catch · Craft · Explore · Win!</p>
         <button id="btn-play" class="btn-hero" type="button" aria-label="Play">
           <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M20 12v40l36-20z"/></svg>
         </button>
       </div>
     </div>
 
+    <div id="victory-screen" class="screen victory hidden">
+      <div class="title-veil" aria-hidden="true"></div>
+      <div class="title-content">
+        <p class="brand victory-brand">You win!</p>
+        <p class="tagline">Rainbow turbo · Boss beaten · Zombies silly · House built</p>
+        <button id="btn-again" class="btn-hero" type="button" aria-label="Play again">
+          <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true"><path fill="currentColor" d="M20 12v40l36-20z"/></svg>
+        </button>
+      </div>
+    </div>
+
     <div id="hud" class="hud hidden" aria-live="polite">
+      <div class="biome-chip" id="biome-chip">Starting ocean</div>
       <div class="hearts" id="hearts"></div>
+      <div class="boss-bar hidden" id="boss-bar">
+        <div class="boss-label">Goofy Boss</div>
+        <div class="boss-track"><div class="boss-fill" id="boss-fill"></div></div>
+      </div>
       <div class="inventory" id="inventory"></div>
+      <div class="weapon-row" id="weapon-row"></div>
       <div class="toast" id="toast" hidden></div>
     </div>
 
@@ -51,29 +68,41 @@
         </div>
       </div>
       <div class="action-btns">
+        <button id="btn-attack" class="btn-action attack" type="button" aria-label="Attack">
+          <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
+            <path d="M10 34 L28 8 L34 12 L16 38 Z" fill="#fff8d0"/>
+            <rect x="8" y="32" width="10" height="6" rx="2" fill="#8b5a2b"/>
+          </svg>
+        </button>
         <button id="btn-catch" class="btn-action catch" type="button" aria-label="Catch">
-          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
             <ellipse cx="24" cy="26" rx="14" ry="9" fill="#FF8A3D"/>
             <path d="M10 26c0-4 4-8 8-8" fill="none" stroke="#E86A1A" stroke-width="3" stroke-linecap="round"/>
             <circle cx="34" cy="24" r="2.2" fill="#1a3a4a"/>
           </svg>
         </button>
-        <button id="btn-cook" class="btn-action cook" type="button" aria-label="Cook">
-          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+        <button id="btn-cook" class="btn-action cook" type="button" aria-label="Action">
+          <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
             <path d="M22 6c1 3 2 5 2 7 2-2 4-5 5-8-3 1-5 1-7 1z" fill="#FFD166"/>
             <path d="M18 10c2 4 3 6 3 9 3-3 5-6 7-10-4 1-7 1-10 1z" fill="#FF6B35"/>
             <ellipse cx="24" cy="38" rx="14" ry="4" fill="#4a3420"/>
             <path d="M12 36v-10c0-1 1-2 2-2h20c1 0 2 1 2 2v10" fill="#2d4a3a"/>
             <ellipse cx="24" cy="26" rx="12" ry="5" fill="#1a3028"/>
-            <path d="M10 30c0-4 2-6 4-6M38 30c0-4-2-6-4-6" fill="none" stroke="#5a7a68" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button id="btn-craft" class="btn-action craft" type="button" aria-label="Craft">
+          <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
+            <rect x="8" y="22" width="32" height="10" rx="3" fill="#c9a227"/>
+            <circle cx="16" cy="27" r="4" fill="#7ee0ff"/>
+            <circle cx="32" cy="27" r="4" fill="#ff8a3d"/>
           </svg>
         </button>
       </div>
     </div>
 
     <div id="hint" class="hint hidden">
-      <span class="hint-desktop">Arrows / WASD move · Space catch · E cook</span>
-      <span class="hint-touch">Joystick move · Fish button catch · Pot button cook</span>
+      <span class="hint-desktop">WASD move · Space catch · F attack · E action · C craft · Q weapon</span>
+      <span class="hint-touch">Joystick · Fish catch · Sword attack · Pot action · Craft</span>
     </div>
   </div>
   <script type="module" src="game.js"></script>
