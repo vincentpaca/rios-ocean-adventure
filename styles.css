@@ -1,15 +1,11 @@
 :root {
   --aqua-deep: #0a6b8a;
   --aqua-mid: #1a9bb8;
-  --aqua-light: #5ec8e0;
   --foam: #e8f9ff;
-  --sand: #f0d9a8;
-  --coral: #ff6b4a;
   --sunny: #ffd166;
-  --kelp: #2d8a6e;
   --ink: #12344a;
   --heart: #ff5a7a;
-  --panel: rgba(8, 48, 68, 0.45);
+  --panel: rgba(8, 48, 68, 0.42);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
 }
@@ -20,7 +16,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #083048;
+  background: #074a62;
   font-family: "Nunito", "Baloo 2", sans-serif;
   -webkit-tap-highlight-color: transparent;
   touch-action: none;
@@ -37,14 +33,46 @@ html, body {
 
 #game {
   display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
-  background: var(--aqua-mid);
+  background: #3ec8e0;
 }
 
 .hidden { display: none !important; }
 
-/* —— Title —— */
+.loading {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255, 232, 160, 0.22) 0%, transparent 55%),
+    linear-gradient(180deg, #5ad4ef 0%, #1a8fb0 100%);
+  pointer-events: none;
+}
+
+.brand-load {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  color: #fffef6;
+  text-shadow: 0 3px 0 rgba(10, 70, 95, 0.3);
+}
+
+.load-msg {
+  font-weight: 800;
+  color: rgba(255, 250, 230, 0.9);
+  animation: brand-bob 1.4s ease-in-out infinite;
+}
+
+/* —— Title over live 3D scene —— */
 .screen {
   position: absolute;
   inset: 0;
@@ -53,66 +81,22 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  pointer-events: auto;
 }
 
-.title-sky {
+.title-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 50% 0%, #ffe8a8 0%, transparent 55%),
-    linear-gradient(180deg, #7ad4ef 0%, #2aa8c9 38%, #0e7a9a 72%, #0a5a78 100%);
-  animation: sky-shift 12s ease-in-out infinite alternate;
-}
-
-@keyframes sky-shift {
-  from { filter: saturate(1) brightness(1); }
-  to { filter: saturate(1.15) brightness(1.05); }
-}
-
-.title-waves {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 42%;
+    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(255, 232, 160, 0.28) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(7, 60, 82, 0.12) 0%, rgba(7, 60, 82, 0.38) 100%);
   pointer-events: none;
+  animation: veil-breathe 10s ease-in-out infinite alternate;
 }
 
-.title-waves span {
-  position: absolute;
-  left: -10%;
-  width: 120%;
-  height: 100%;
-  border-radius: 45% 45% 0 0;
-  opacity: 0.55;
-  animation: wave-drift 7s ease-in-out infinite;
-}
-
-.title-waves span:nth-child(1) {
-  bottom: -8%;
-  background: linear-gradient(180deg, #3eb8d4, #0e6f8c);
-  animation-duration: 8s;
-}
-
-.title-waves span:nth-child(2) {
-  bottom: -18%;
-  background: linear-gradient(180deg, #2a9bb8, #0a5a72);
-  opacity: 0.7;
-  animation-duration: 10s;
-  animation-delay: -2s;
-}
-
-.title-waves span:nth-child(3) {
-  bottom: -28%;
-  background: linear-gradient(180deg, #1684a0, #074456);
-  opacity: 0.85;
-  animation-duration: 12s;
-  animation-delay: -4s;
-}
-
-@keyframes wave-drift {
-  0%, 100% { transform: translateX(0) scaleY(1); }
-  50% { transform: translateX(4%) scaleY(1.04); }
+@keyframes veil-breathe {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
 }
 
 .title-content {
@@ -122,6 +106,7 @@ html, body {
   padding: 1.5rem;
   padding-top: calc(1.5rem + var(--safe-top));
   max-width: 92vw;
+  pointer-events: auto;
 }
 
 .brand {
@@ -133,8 +118,8 @@ html, body {
   color: #fffef6;
   text-shadow:
     0 4px 0 rgba(10, 70, 95, 0.35),
-    0 12px 28px rgba(6, 40, 60, 0.35),
-    0 0 40px rgba(255, 220, 120, 0.25);
+    0 12px 28px rgba(6, 40, 60, 0.4),
+    0 0 36px rgba(255, 220, 120, 0.22);
   animation: brand-bob 3.2s ease-in-out infinite;
 }
 
@@ -149,7 +134,7 @@ html, body {
   font-weight: 800;
   color: rgba(255, 250, 230, 0.92);
   letter-spacing: 0.04em;
-  text-shadow: 0 2px 8px rgba(8, 50, 70, 0.4);
+  text-shadow: 0 2px 8px rgba(8, 50, 70, 0.45);
 }
 
 .btn-hero {
@@ -174,51 +159,12 @@ html, body {
 .btn-hero:active {
   transform: translateY(4px);
   box-shadow: 0 2px 0 #d4890a, 0 6px 14px rgba(8, 40, 60, 0.3);
+  animation: none;
 }
 
 @keyframes pulse-play {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.06); }
-}
-
-.title-fish {
-  position: absolute;
-  width: 56px;
-  height: 36px;
-  right: 12%;
-  top: 28%;
-  background: #ff8a3d;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  animation: fish-swim 9s ease-in-out infinite;
-  box-shadow: inset -8px -4px 0 rgba(0,0,0,0.08);
-}
-
-.title-fish::before {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: 8px;
-  border: 10px solid transparent;
-  border-right-color: #e86a1a;
-}
-
-.title-fish::after {
-  content: "";
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  width: 6px;
-  height: 6px;
-  background: #12344a;
-  border-radius: 50%;
-}
-
-@keyframes fish-swim {
-  0%, 100% { transform: translate(0, 0) scaleX(1); }
-  40% { transform: translate(-40vw, 18px) scaleX(1); }
-  41% { transform: translate(-40vw, 18px) scaleX(-1); }
-  90% { transform: translate(8vw, -10px) scaleX(-1); }
-  91% { transform: translate(8vw, -10px) scaleX(1); }
 }
 
 /* —— HUD —— */
@@ -270,8 +216,9 @@ html, body {
   padding: 0.4rem 0.55rem;
   background: var(--panel);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-radius: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.16);
 }
 
 .inv-slot {
@@ -379,7 +326,7 @@ html, body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, opacity 0.2s ease;
   touch-action: manipulation;
 }
 
@@ -395,11 +342,6 @@ html, body {
 
 .btn-action.cook {
   background: linear-gradient(160deg, #7ec98a, #3d9a68);
-}
-
-.btn-action:disabled {
-  opacity: 0.45;
-  filter: grayscale(0.3);
 }
 
 .hint {
